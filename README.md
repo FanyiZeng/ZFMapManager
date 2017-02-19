@@ -1,5 +1,3 @@
-
-
 # ZFMapManager
 
 ![选择地点](http://ogrzc8ghg.bkt.clouddn.com/mapManager.gif)
@@ -7,7 +5,7 @@
 
 管理定位模块
 使用说明:    
-1. 您需要在您的Xcode工程中引入
+-  您需要在您的Xcode工程中引入
                         CoreLocation.framework,   
                         QuartzCore.framework、   
                         OpenGLES.framework、   
@@ -17,35 +15,32 @@
                         libsqlite3.0.tbd（xcode7以前为 libsqlite3.0.dylib）、   
                         CoreTelephony.framework 、   
                         libstdc++.6.0.9.tbd   
-                        以及Framework文件夹中的所有文件     
+                        下图所示所有百度SDK     
                         mapapi.bundle 路径:BaiduMapAPI_Map.framework/Resources
  
 ![mapapi.bundle 路径:BaiduMapAPI_Map.framework/Resources](http://ogrzc8ghg.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-02-19%20%E4%B8%8B%E5%8D%886.05.21.png)
 
 
 
-2. 添加支持HTTPS所需的penssl静态库：libssl.a和libcrypto.a（SDK打好的包存放于Framework目录下）
+-  添加支持HTTPS所需的penssl静态库：libssl.a和libcrypto.a（SDK打好的包存放于Framework目录下）
  添加方法： 在 TARGETS->Build Phases-> Link Binary With Libaries中点击“+”按钮，在弹出的窗口中点击“Add Other”按钮，选择libssl.a和libcrypto.a添加到工程中
  
  
-3. 从BaiduMapAPI_Map.framework||Resources文件中选择mapapi.bundle文件，并勾选“Copy items if needed”复选框，单击“Add”按钮，将资源文件添加到工程中。
+- 从BaiduMapAPI_Map.framework||Resources文件中选择mapapi.bundle文件，并勾选“Copy items if needed”复选框，单击“Add”按钮，将资源文件添加到工程中。
  
  
  
-4. 在TARGETS->Build Settings->Other Linker Flags 中添加-ObjC。
+-  在TARGETS->Build Settings->Other Linker Flags 中添加-ObjC。
  
  
  
-5. 添加定位允许 NSLocationWhenInUseUsageDescription
+- 添加定位允许 NSLocationWhenInUseUsageDescription
 
 
-6. [百度SDK需要自己下载](http://mapopen-pub-iossdk.bj.bcebos.com/map/v3_2_1/all/BaiduMap_IOSSDK_v3.2.1_All.zip)
+-  [百度SDK需要自己下载](http://mapopen-pub-iossdk.bj.bcebos.com/map/v3_2_1/all/BaiduMap_IOSSDK_v3.2.1_All.zip)
 
 
-## 使用接口
-使用`ZFMapManager`提供的方法进行地图操作
-
-- 构造函数 使用前需要先配置自己的AK 在构造函数内. ZFMapManager.m  L : 76
+- 构造函数 使用前还需要先配置自己的AK 在构造函数内. `ZFMapManager.m`  L : 76
 
 ```
 - (instancetype)init
@@ -62,6 +57,11 @@
         }
         ...
 ```
+
+
+## 使用接口
+使用`ZFMapManager`提供的方法进行地图操作
+
 
 - 初始化
 ```
@@ -151,4 +151,4 @@ _MapMgr;
 - 如何自定义界面
 1. tableView的样式定制,可以在`ZFAddressSelectorController`对`tb`属性进行定制
 2. mapView界面中,定位按钮和选择按钮可以在`ZFMapView.m` L:49-70行进行样式定制
-3. searchBar使用的是tableView的表头视图.
+3. searchBar是tableView的表头视图.
