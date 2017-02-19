@@ -30,10 +30,10 @@
     });
     
     #pragma mark - 监听通知
-    /// 监听通知
+    /// 可以对通知进行监听,获取最新的所在城市信息
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mapManagerCityDidChangeNotification:) name:KZFMapManagerCityDidChangeNotification object:nil];
     
-    
+    /// 以及选择的地点. 这个通知如果不使用 ZFAddressSelectorController类 需要自己手动实现. 他响应了Demo中的cell点击
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mapManagerLocationDidSelectedNotification:) name:KZFMapManagerLocationDidSelectedNotification object:nil];
 }
 
@@ -71,20 +71,20 @@
     
     //制作弱引用替身
     __weak typeof(self) weakSelf = self;
-    [[ZFMapManager sharedInstance] nearByPoi:^(NSArray *poi) {
+    [_MapMgr nearByPoi:^(NSArray *poi) {
         /// 获取当前位置信息
         weakSelf.currentLocLabel.text = poi.firstObject[ZFMapNameKEY];
     }];
     
     /// 设置城市位置信息,如果为nil 或通过通知更新
-    self.currentCityLabel.text = [ZFMapManager sharedInstance].city;
+    self.currentCityLabel.text = _MapMgr.city;
 }
 
 
 #pragma mark - 进入地图选择器
 - (IBAction)pushAction:(id)sender {
     /// 获取地图选择器
-    ZFAddressSelectorController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]]instantiateViewControllerWithIdentifier:@"ZFAddressSelectorController"];
+    ZFAddressSelectorController *vc = [ZFAddressSelectorController new];//[[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]]instantiateViewControllerWithIdentifier:@"ZFAddressSelectorController"];
     
     [self.navigationController pushViewController:vc animated:YES];
 }

@@ -42,7 +42,7 @@
     [addressTableView registerClass:[ZFAddressCell class] forCellReuseIdentifier:@"CELL"];
     
     [self.view addSubview:addressTableView];
-    
+    addressTableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     
     /// 添加一个search Bar
     UISearchBar *searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, 0, 40)];
