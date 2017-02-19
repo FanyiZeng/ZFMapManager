@@ -1,16 +1,16 @@
 # ZFMapManager
 管理定位模块
-使用说明:
-1. 您需要在您的Xcode工程中引入CoreLocation.framework,
-                        QuartzCore.framework、
-                        OpenGLES.framework、
-                        SystemConfiguration.framework、
-                        CoreGraphics.framework、 
-                        Security.framework、
-                        libsqlite3.0.tbd（xcode7以前为 libsqlite3.0.dylib）、
-                        CoreTelephony.framework 、
-                        libstdc++.6.0.9.tbd
-                        以及Framework文件夹中的所有文件
+使用说明:    
+1. 您需要在您的Xcode工程中引入CoreLocation.framework,   
+                        QuartzCore.framework、   
+                        OpenGLES.framework、   
+                        SystemConfiguration.framework、   
+                        CoreGraphics.framework、     
+                        Security.framework、   
+                        libsqlite3.0.tbd（xcode7以前为 libsqlite3.0.dylib）、   
+                        CoreTelephony.framework 、   
+                        libstdc++.6.0.9.tbd   
+                        以及Framework文件夹中的所有文件   
  
 2. 添加支持HTTPS所需的penssl静态库：libssl.a和libcrypto.a（SDK打好的包存放于Framework目录下）
  添加方法： 在 TARGETS->Build Phases-> Link Binary With Libaries中点击“+”按钮，在弹出的窗口中点击“Add Other”按钮，选择libssl.a和libcrypto.a添加到工程中
@@ -25,3 +25,5 @@
  
  
 5. 添加定位允许 NSLocationWhenInUseUsageDescription
+
+6. 百度SDK需要自己下载
