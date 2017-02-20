@@ -118,6 +118,10 @@
     _mapView.updateDelegate = self;
     //启动LocationService
     [_locService startUserLocationService];
+
+    //设置中心位置
+    [self.mapView setCenterCoordinate:self.currentCenter animated:YES];
+    
     return mapView;
 }
 
@@ -345,10 +349,14 @@
     }
     
     /// 判断行政区谁最大
-    NSInteger flag = 0;
+    __block NSInteger flag = 0;
     __block NSString *dis = nil;
     [countDict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-        if ([obj integerValue] > flag) {
+        if ([obj integerValue] > flag)
+        {
+            //更改flag
+            flag = [obj integerValue];
+            //记录行政区
             dis = key;
         }
     }];
